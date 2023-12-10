@@ -33,17 +33,9 @@ impl CliCommand {
         let quit_command_name = "q";
 
         if maybe_command_type == new_command_name {
-            Some(CliCommand {
-                command_type: CliCommandType::New,
-                name: String::from(new_command_name),
-                description: String::from("create a new to-do"),
-            })
+            Some(Self::from_type(CliCommandType::New))
         } else if maybe_command_type == quit_command_name {
-            Some(CliCommand {
-                command_type: CliCommandType::Quit,
-                name: String::from(quit_command_name),
-                description: String::from("quit the app"),
-            })
+            Some(Self::from_type(CliCommandType::Quit))
         } else {
             println!("does not match any known command");
             None
